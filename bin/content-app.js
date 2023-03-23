@@ -2,6 +2,8 @@
 
 const { Command } = require('commander');
 const readline = require('readline');
+import contentful from 'contentful-management';
+import { createCoreModels } from '@content-app/core';
 const program = new Command();
 
 program
@@ -16,9 +18,22 @@ program
       input: process.stdin,
       output: process.stdout
     });
-    rl.question('Are you sure you want to use these values? (y/n) ', (answer) => {
+    rl.question('Are you sure you want to use these values? (y/n) ', async (answer) => {
       if (answer.toLowerCase() === 'y') {
         console.log(`Loading content types with accessToken: ${accessToken}, spaceId: ${spaceId}, environment: ${environment || 'default'}`);
+
+        const client = contentful.createClient({
+          accessToken: accessToken,
+        })
+        
+        try {
+          await createCoreModels(client, {
+            spaceId: spaceId,
+            environment: environment || 'master' || 'main',
+        });
+        } catch (error) {
+          console.error(console.error());
+        }
         
       } else {
         console.log('Aborted.');
