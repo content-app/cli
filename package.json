@@ -1,6 +1,6 @@
 {
   "name": "@content-app/cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Content-app CLI",
   "main": "bin/content-app.js",
   "scripts": {

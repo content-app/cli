@@ -2,9 +2,10 @@
 
 const { Command } = require('commander');
 const readline = require('readline');
-import contentful from 'contentful-management';
-import { createCoreModels } from '@content-app/core';
+const contentful = require('contentful-management');
+const contentApp = require('@content-app/core').default;
 const program = new Command();
+
 
 program
   .command('load-content-types')
@@ -27,12 +28,12 @@ program
         })
         
         try {
-          await createCoreModels(client, {
+          await contentApp.createCoreModels(client, {
             spaceId: spaceId,
             environment: environment || 'master' || 'main',
         });
         } catch (error) {
-          console.error(console.error());
+          console.error(console.error(error));
         }
         
       } else {
