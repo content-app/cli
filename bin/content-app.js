@@ -22,8 +22,6 @@ program
     });
     rl.question('Are you sure you want to use these values? (y/n) ', async (answer) => {
       if (answer.toLowerCase() === 'y') {
-        console.log(`Loading content types with accessToken: ${accessToken}, spaceId: ${spaceId}, environment: ${environment || 'default'}`);
-
         const finalAccessToken = accessToken || process.env.MANAGEMENT_ACCESS_TOKEN;
         const finalSpaceId = spaceId || process.env.SPACE_ID;
         const finalEnvironment = environment || process.env.ENVIRONMENT || 'master' || 'main';
@@ -60,14 +58,14 @@ program
       input: process.stdin,
       output: process.stdout
     });
-    rl.question(`Are you sure you want to load the content module ${contentModule} into accessToken: ${accessToken}, spaceId: ${spaceId}, environment: ${environment || 'default'}? (y/n) `, async (answer) => {
+    rl.question(`Are you sure you want to use this values`, async (answer) => {
       if (answer.toLowerCase() === 'y') {
-        const modulePath = path.join(process.cwd(), 'node_modules', `@content-app/content-module_${contentModule}/install.js`);
-        const contentModuleInstall = require(modulePath);
-
         const finalAccessToken = accessToken || process.env.MANAGEMENT_ACCESS_TOKEN;
         const finalSpaceId = spaceId || process.env.SPACE_ID;
         const finalEnvironment = environment || process.env.ENVIRONMENT || 'master' || 'main';
+
+        const modulePath = path.join(process.cwd(), 'node_modules', `@content-app/content-module_${contentModule}/install.js`);
+        const contentModuleInstall = require(modulePath);
         
         const client = contentful.createClient({
           accessToken: finalAccessToken,
