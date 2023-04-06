@@ -1,6 +1,6 @@
 {
   "name": "@content-app/cli",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Content-app CLI",
   "main": "bin/content-app.js",
   "scripts": {
@@ -17,6 +17,7 @@
   "dependencies": {
     "@content-app/core": "^0.1.0",
     "commander": "^10.0.0",
-    "contentful-management": "^10.31.1"
+    "contentful-management": "^10.31.1",
+    "dotenv": "^16.0.3"
   }
 }

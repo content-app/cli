@@ -6,6 +6,7 @@ const contentful = require('contentful-management');
 const contentApp = require('@content-app/core').default;
 const program = new Command();
 const path = require('path');
+require('dotenv').config();
 
 
 program
@@ -58,7 +59,7 @@ program
       input: process.stdin,
       output: process.stdout
     });
-    rl.question(`Are you sure you want to use this values`, async (answer) => {
+    rl.question('Are you sure you want to use these values? (y/n) ', async (answer) => {
       if (answer.toLowerCase() === 'y') {
         const finalAccessToken = accessToken || process.env.MANAGEMENT_ACCESS_TOKEN;
         const finalSpaceId = spaceId || process.env.SPACE_ID;
