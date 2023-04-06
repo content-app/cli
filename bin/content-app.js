@@ -25,8 +25,8 @@ program
         console.log(`Loading content types with accessToken: ${accessToken}, spaceId: ${spaceId}, environment: ${environment || 'default'}`);
 
         const finalAccessToken = accessToken || process.env.MANAGEMENT_ACCESS_TOKEN;
-        const finalSpaceId = spaceId || process.env.CONTENTFUL_SPACE_ID;
-        const finalEnvironment = environment || process.env.CONTENTFUL_ENVIRONMENT || 'master' || 'main';
+        const finalSpaceId = spaceId || process.env.SPACE_ID;
+        const finalEnvironment = environment || process.env.ENVIRONMENT || 'master' || 'main';
 
         const client = contentful.createClient({
           accessToken: finalAccessToken,
@@ -66,8 +66,8 @@ program
         const contentModuleInstall = require(modulePath);
 
         const finalAccessToken = accessToken || process.env.MANAGEMENT_ACCESS_TOKEN;
-        const finalSpaceId = spaceId || process.env.CONTENTFUL_SPACE_ID;
-        const finalEnvironment = environment || process.env.CONTENTFUL_ENVIRONMENT || 'master' || 'main';
+        const finalSpaceId = spaceId || process.env.SPACE_ID;
+        const finalEnvironment = environment || process.env.ENVIRONMENT || 'master' || 'main';
         
         const client = contentful.createClient({
           accessToken: finalAccessToken,
