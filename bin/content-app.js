@@ -3,11 +3,10 @@
 const { Command } = require('commander');
 const readline = require('readline');
 const contentful = require('contentful-management');
-const contentApp = require('@content-app/core').default;
+const contentApp = require('@content-app/core');
 const program = new Command();
 const path = require('path');
 require('dotenv').config();
-
 
 program
   .command('load-content-types')
@@ -35,7 +34,7 @@ program
           await contentApp.createCoreModels(client, {
             spaceId: finalSpaceId,
             environment: finalEnvironment,
-        });
+          });
         } catch (error) {
           console.error(console.error(error));
         }
